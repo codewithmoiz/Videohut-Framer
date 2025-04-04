@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-gsap.to('.portfolio-parent .portfolio-cards a',{
+gsap.to('.portfolio-parent .portfolio-cards',{
   x: '-62.5%',
   scrollTrigger: {
     trigger: '.portfolio-parent',
