@@ -4,6 +4,9 @@
 /* Syne */
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
 
+html{
+    scroll-behavior: smooth;
+}
 
 :root{
     --box-width: 1300px;
@@ -848,10 +851,46 @@ nav.active header{
 }
 
 
-/* .portfolio-cards .card{
-    transition: all ease 0.5s;
+
+a#scroll-btn{
+    backdrop-filter: blur(15px);
+    background: linear-gradient(112deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.11) 100%);
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 0px 0px 0px, rgba(0, 0, 0, 0.09) 0px 0px 0px 0px, rgba(0, 0, 0, 0.19) 0px 0px 0px 0px;
+    border-top: 2px solid rgba(255, 255, 255, .5);
+    border-left: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 7px;
+    transform: none;
+    transform-origin: 50% 50% 0px;
+    transition: all ease 0.4s;
+    overflow: hidden;
 }
-.portfolio-cards .card:hover{
-    width: 80vw;
-    height: 75vh;
-} */
+a#scroll-btn::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        127.89999999999999% 258% at -40.300000000000004% 0%,
+        rgb(255, 122, 59) 51.69569534721884%,
+        rgb(237, 153, 29) 75.40622818511069%,
+        rgb(9, 93, 93) 100%
+      );
+    border-radius: 7px;
+    transform: none;
+    transform-origin: center;
+    pointer-events: none;
+    transition: all ease 0.35s;
+}
+a#scroll-btn svg{
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+a#scroll-btn svg path{
+    fill: #fff;
+}
+a#scroll-btn:hover::before{
+    transform: scale(0);
+}
