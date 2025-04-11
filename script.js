@@ -41,8 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     tiltButtons.forEach((btn) => {
         btn.addEventListener('mousemove', (e) => {
-            let x = (e.offsetX - btn.offsetWidth / 2) * 0.3;
-            let y = (e.offsetY - btn.offsetHeight / 2) * 0.3;
+            let x = (e.offsetX - btn.offsetWidth / 2) * 0.01;
+            let y = (e.offsetY - btn.offsetHeight / 2) * 0.01;
 
             gsap.to(btn, {
                 x: x,
@@ -166,10 +166,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   });
 
+
 });
 
+
 gsap.to('.portfolio-parent .portfolio-cards',{
-  x: '-62.5%',
+  x: '-40%',
   scrollTrigger: {
     trigger: '.portfolio-parent',
     start: 'top top',
@@ -179,6 +181,9 @@ gsap.to('.portfolio-parent .portfolio-cards',{
 })
 
 }
+
+
+
 
 
 
@@ -311,6 +316,25 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+// Footer Hover
+document.querySelector('.footer-inner').addEventListener('mouseenter', () => {
+  gsap.to('.footer-inner', {
+      "--footer-bg-value": "90% 0%",
+      duration: 1,
+      ease: "power3.out"
+  })
+})
+document.querySelector('.footer-inner').addEventListener('mouseleave', () => {
+  gsap.to('.footer-inner', {
+      "--footer-bg-value": "3.7% 0%",
+      duration: 1,
+      ease: "power3.out"
+  })
+})
+
+
+// Popup Menu
 const nav = document.querySelector('nav');
 const hamburger = document.querySelector('.hamburger');
 const mobileMenu = document.querySelector('.mobile-menu');

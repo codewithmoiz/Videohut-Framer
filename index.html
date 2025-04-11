@@ -38,7 +38,10 @@
                             <a class="syne flex text-[16px] font-semibold leading-[1em] text-[#ffffffcc]" href="#">Blogs</a>
                         </li>
                     </ul>
-                    <button class="syne text-[#0d0d0d] bg-white text-[16px] leading-[1em] font-bold px-[33px] py-[17px] rounded-[50px] cursor-pointer hidden lg:block">Let's Talk</button>
+                    <button class="syne text-[#0d0d0d] bg-white text-[16px] leading-[1em] font-bold px-[33px] py-[17px] items-center gap-[7px] rounded-[50px] cursor-pointer hidden lg:flex">
+                        <div class="red-circle w-[12px] h-[12px] bg-[#FF000D] rounded-full"></div>                        
+                        <span>Let's Talk</span>
+                    </button>
                     <div class="hamburger lg:hidden">
                         <span class="bar"></span>
                         <span class="bar"></span>
@@ -68,7 +71,9 @@
                         <a class="syne flex justify-center text-[16px] font-semibold leading-[1em] text-[#ffffffcc]" href="#">Blogs</a>
                     </li>
                 </ul>
-                <button class="syne text-[#0d0d0d] bg-white text-[16px] leading-[1em] font-bold px-[33px] py-[17px] rounded-[50px] cursor-pointer">Let's Talk</button>
+                <button class="syne text-[#0d0d0d] bg-white text-[16px] leading-[1em] font-bold px-[33px] py-[17px] rounded-[50px] cursor-pointer">
+                    Let's Talk
+                </button>
             </div>
         </header>
     </nav>
@@ -123,7 +128,7 @@
     </div>
 
     <div class="portfolio-parent w-full lg:h-[350vh] relative">
-        <div class="portfolio w-full flex flex-col items-center gap-[40px] md:gap-[70px] sticky top-0 left-0 overflow-hidden">
+        <div class="portfolio w-full flex flex-col items-center gap-[40px] md:gap-[70px] sticky top-[30px] left-0 overflow-hidden">
 
             <div class="head w-[95%] lg:w-[1240px] flex flex-col md:flex-row items-center justify-between gap-[10px] lg:gap-0">
                 <h2 class="syne text-[25px] lg:text-[30px] font-semibold text-white leading-[1em] text-center md:text-start">Our Handpicked Featured Portfolio</h2>
@@ -148,7 +153,7 @@
                 </a>
                 
                 <a href="#">
-                    <div class="card w-[100%] lg:w-[425px] h-[375px] md:h-[425px] rounded-[51px] relative overflow-hidden cursor-none">
+                    <div class="card active w-[100%] lg:w-[425px] h-[375px] md:h-[425px] rounded-[51px] relative overflow-hidden cursor-none">
                         <div class="syne card-cursor w-[115px] h-[115px] opacity-0 border-[1px] text-[13px] font-semibold leading-[1.2em] uppercase text-center flex items-center justify-center text-white border-solid border-[#8b8b8b] rounded-full absolute top-0 left-0 z-[1]">
                             Watch <br>Full Video
                         </div>
@@ -706,7 +711,7 @@
     </div>
 
     <div class="footer w-full mt-[110px] px-[10px] pb-[65px] md:px-0 flex flex-col items-center relative">
-        <div class="footer-inner w-[var(--box-width)] p-[10px] pb-[15px] md:p-[20px] flex flex-col items-center gap-[10px] rounded-[40px]">
+        <div class="footer-inner relative overflow-hidden w-[var(--box-width)] p-[10px] pb-[15px] md:p-[20px] flex flex-col items-center gap-[10px] rounded-[40px]">
             <div class="footer-top w-[95%] lg:w-full flex flex-col items-center gap-[30px]">
                 <img class="w-[300px] lg:w-[385px] my-[15px]" src="./Assets/Media/Logo.svg" alt="">
                 <div class="w-full flex flex-col items-center p-[30px] md:px-[58px] md:py-[47px] border-[1px] border-solid border-[#ffffff4d] rounded-[40px] bg-[#ffffff0a]">
@@ -742,7 +747,10 @@
                         <h5 class="syne text-[16px] lg:text-[18px] text-[#ffffffcc] font-semibold leading-[1em]">Subscribe to our newsletter</h5>
                         <form class="w-full flex flex-col lg:flex-row lg:items-center gap-[7px]">
                             <input class="w-full lg:w-[70%] bg-[#ffffff1a] p-[15px] text-[16px] border-none outline-none rounded-[50px]" type="email" placeholder="name@email.com" required>
-                            <button class="syne bg-[#ff7a3b] text-[16px] text-white leading-[1em] font-semibold text-center py-[15px] rounded-[50px] w-[100%] md:w-[30%] lg:w-[28%]">Subscribe</button>
+                            <button class="syne flex items-center justify-center gap-[7px] bg-[#ff7a3b] text-[16px] text-white leading-[1em] font-semibold text-center py-[15px] rounded-[50px] w-[100%] md:w-[30%] lg:w-[28%] cursor-pointer">
+                                <div class="red-circle w-[12px] h-[12px] bg-[#ffffff] rounded-full"></div>  
+                                <span>Subscribe</span>
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -819,10 +827,10 @@
                     </span>
                 </a>
             </div>
-            <div class="footer-bottom-bar w-[95%] lg:w-full flex items-center justify-end flex-col md:flex-row gap-[10px] md:gap-[45px] pt-[10px] pb-[3px]">
+            <!-- <div class="footer-bottom-bar w-[95%] lg:w-full flex items-center justify-end flex-col md:flex-row gap-[10px] md:gap-[45px] pt-[10px] pb-[3px]">
                 <span class="inter text-[15px] text-white font-light leading-[1em] hover:underline hover:text-[#ff8442] transition-colors duration-150">©Template by RealMehedi</span>
                 <span class="inter text-[15px] text-white font-light leading-[1em] hover:underline hover:text-[#ff8442] transition-colors duration-150">Built in Framer</span>
-            </div>
+            </div> -->
         </div>
     </div>
     
