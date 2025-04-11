@@ -861,8 +861,11 @@ a#scroll-btn{
     border-radius: 7px;
     transform: none;
     transform-origin: 50% 50% 0px;
-    transition: all ease 0.4s;
     overflow: hidden;
+    position: fixed;
+    right: 3%;
+    bottom: 3%;
+    opacity: 0;
 }
 a#scroll-btn::before{
     content: "";

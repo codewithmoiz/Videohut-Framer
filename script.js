@@ -353,3 +353,39 @@ document.querySelectorAll('.mobile-menu a').forEach(link => {
         mobileMenu.classList.remove('active');
     });
 });
+
+
+// Scroll To Top Button
+// document.addEventListener("DOMContentLoaded", () => {
+//   window.addEventListener('scroll', () => {
+//     if (window.scrollY > 10) {
+//       gsap.to('#scroll-btn', {
+//         opacity: 1,
+//         bottom: "5%"
+//       });
+//     } else {
+//       gsap.to('#scroll-btn', {
+//         opacity: 0,
+//         bottom: "3%"
+//       });
+//     }
+//   });
+// });
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 10) {
+    gsap.to("#scroll-btn", {
+      opacity: 1,
+      bottom: "5%",
+      duration: 0.3,
+      ease: "ease"
+    });
+  } else {
+    gsap.to("#scroll-btn", {
+      opacity: 0,
+      bottom: "1%",
+      duration: 0.3,
+      ease: "ease"
+    });
+  }
+});
