@@ -183,7 +183,245 @@ gsap.to('.portfolio-parent .portfolio-cards',{
 }
 
 
-
+// Video Popup
+document.addEventListener('DOMContentLoaded', () => {
+  // Get all card links and cards
+  const cardLinks = document.querySelectorAll('.portfolio-cards a');
+  const cards = Array.from(document.querySelectorAll('.portfolio-cards .card'));
+  let currentCardIndex = 0;
+  
+  const popupOverlay = document.createElement('div');
+  popupOverlay.className = 'popup-overlay fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 z-50 hidden';
+  document.body.appendChild(popupOverlay);
+  
+  const popupContent = document.createElement('div');
+  popupContent.className = 'popup-content relative rounded-3xl overflow-hidden';
+  popupOverlay.appendChild(popupContent);
+  
+  const closeButton = document.createElement('button');
+  closeButton.className = 'close-btn !absolute !top-[7.5%] md:!right-[12%] !right-[6%] z-[9] md:w-14 md:h-14 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300';
+  closeButton.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+  popupOverlay.appendChild(closeButton);
+  
+  const navControls = document.createElement('div');
+  navControls.className = 'nav-controls w-[90vw] md:w-[75vw] absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] flex justify-between gap-8 z-10';
+  
+  const prevButton = document.createElement('button');
+  prevButton.className = 'prev-btn w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300';
+  prevButton.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>';
+  
+  const nextButton = document.createElement('button');
+  nextButton.className = 'next-btn w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300';
+  nextButton.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>';
+  
+  navControls.appendChild(prevButton);
+  navControls.appendChild(nextButton);
+  popupOverlay.appendChild(navControls);
+  
+  let activeCardData = null;
+  
+  function showPopup(cardIndex) {
+    document.querySelector('nav').style.display = 'none';
+    
+    currentCardIndex = cardIndex;
+    const card = cards[cardIndex];
+    
+    const cardRect = card.getBoundingClientRect();
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    
+    const videoSrc = card.querySelector('video').getAttribute('src');
+    
+    activeCardData = {
+      element: card,
+      rect: cardRect,
+      scrollTop: scrollTop
+    };
+    
+    popupContent.innerHTML = `
+      <video autoplay loop controls class="w-full h-full object-cover object-center" src="${videoSrc}"></video>
+    `;
+    
+    card.style.visibility = 'hidden';
+    
+    popupContent.style.position = 'absolute';
+    popupContent.style.width = `${cardRect.width}px`;
+    popupContent.style.height = `${cardRect.height}px`;
+    popupContent.style.top = `${cardRect.top + scrollTop}px`;
+    popupContent.style.left = `${cardRect.left}px`;
+    popupContent.style.borderRadius = '51px';
+    popupContent.style.transform = 'none';
+    
+    popupOverlay.style.opacity = '0';
+    popupOverlay.classList.remove('hidden');
+    
+    closeButton.style.opacity = '0';
+    navControls.style.opacity = '0';
+    
+    gsap.to(popupOverlay, {
+      opacity: 1,
+      duration: 0.5
+    });
+    
+    gsap.to(popupContent, {
+      top: '50%',
+      left: '50%',
+      xPercent: -50,
+      yPercent: -50,
+      width: '80vw',
+      height: '90vh',
+      borderRadius: '20px',
+      duration: 0.6,
+      ease: "power2.out",
+      onComplete: () => {
+        gsap.to(closeButton, {
+          opacity: 1,
+          duration: 0.3
+        });
+        
+        gsap.to(navControls, {
+          opacity: 1,
+          duration: 0.3
+        });
+      }
+    });
+    
+    updateNavButtons();
+    
+    document.body.classList.add('overflow-hidden');
+  }
+  
+  function navigatePrev() {
+    if (currentCardIndex > 0) {
+      cards[currentCardIndex].style.visibility = 'visible';
+      
+      currentCardIndex--;
+      transitionToCard(currentCardIndex);
+    }
+  }
+  
+  function navigateNext() {
+    if (currentCardIndex < cards.length - 1) {
+      cards[currentCardIndex].style.visibility = 'visible';
+      
+      currentCardIndex++;
+      transitionToCard(currentCardIndex);
+    }
+  }
+  
+  function transitionToCard(newIndex) {
+    const newCard = cards[newIndex];
+    const videoSrc = newCard.querySelector('video').getAttribute('src');
+    
+    const cardRect = newCard.getBoundingClientRect();
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    
+    activeCardData = {
+      element: newCard,
+      rect: cardRect,
+      scrollTop: scrollTop
+    };
+    
+    newCard.style.visibility = 'hidden';
+    
+    gsap.to(popupContent.querySelector('video'), {
+      opacity: 0,
+      duration: 0.3,
+      onComplete: () => {
+        popupContent.innerHTML = `
+          <video autoplay loop controls class="w-full h-full object-cover object-center opacity-0" src="${videoSrc}"></video>
+        `;
+        
+        gsap.to(popupContent.querySelector('video'), {
+          opacity: 1,
+          duration: 0.3
+        });
+        
+        updateNavButtons();
+      }
+    });
+  }
+  
+  function updateNavButtons() {
+    if (currentCardIndex === 0) {
+      prevButton.classList.add('opacity-40', 'cursor-not-allowed');
+    } else {
+      prevButton.classList.remove('opacity-40', 'cursor-not-allowed');
+    }
+    
+    if (currentCardIndex === cards.length - 1) {
+      nextButton.classList.add('opacity-40', 'cursor-not-allowed');
+    } else {
+      nextButton.classList.remove('opacity-40', 'cursor-not-allowed');
+    }
+  }
+  
+  function closePopup() {
+    document.querySelector('nav').style.display = 'flex';
+    
+    if (!activeCardData) return;
+    
+    const card = activeCardData.element;
+    const cardRect = activeCardData.rect;
+    
+    gsap.to([navControls, closeButton], {
+      opacity: 0,
+      duration: 0.3
+    });
+    
+    gsap.to(popupContent, {
+      top: `${cardRect.top + activeCardData.scrollTop}px`,
+      left: `${cardRect.left}px`,
+      xPercent: 0,
+      yPercent: 0,
+      width: `${cardRect.width}px`,
+      height: `${cardRect.height}px`,
+      borderRadius: '51px',
+      duration: 0.5,
+      ease: "power2.in"
+    });
+    
+    gsap.to(popupOverlay, {
+      opacity: 0,
+      duration: 0.5,
+      onComplete: () => {
+        popupOverlay.classList.add('hidden');
+        card.style.visibility = 'visible';
+        
+        document.body.classList.remove('overflow-hidden');
+      }
+    });
+  }
+  
+  cardLinks.forEach((link, index) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      showPopup(index);
+    });
+  });
+  
+  prevButton.addEventListener('click', navigatePrev);
+  nextButton.addEventListener('click', navigateNext);
+  closeButton.addEventListener('click', closePopup);
+  
+  popupOverlay.addEventListener('click', (e) => {
+    if (e.target === popupOverlay || e.target.closest('.close-btn')) {
+      closePopup();
+    }
+  });
+  
+  
+  document.addEventListener('keydown', (e) => {
+    if (popupOverlay.classList.contains('hidden')) return;
+    
+    if (e.key === 'Escape') {
+      closePopup();
+    } else if (e.key === 'ArrowLeft') {
+      navigatePrev();
+    } else if (e.key === 'ArrowRight') {
+      navigateNext();
+    }
+  });
+});
 
 
 
