@@ -941,6 +941,6 @@ a#scroll-btn:hover::before{
   @media (max-width: 767px) {
     .popup-content{
         width: 95vw !important;
-        height: 95vh !important;
+        height: 85vh !important;
     }
   }
