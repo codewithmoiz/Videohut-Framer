@@ -1,38 +1,30 @@
 // Lenis JS with speed-controlling code
 gsap.registerPlugin(ScrollTrigger);
 
-const lenis = new Lenis({
-  duration: 1.2,
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  smooth: true,
-});
+  const lenis = new Lenis({
+    smooth: true,
+    lerp: 0.08
+  })
 
-lenis.on('scroll', ScrollTrigger.update);
+  function raf(time) {
+    lenis.raf(time)
+    ScrollTrigger.update()
+    requestAnimationFrame(raf)
+  }
 
-function update(time) {
-  lenis.raf(time * 1000);
-}
-gsap.ticker.add(update);
-gsap.ticker.lagSmoothing(0);
-
+  requestAnimationFrame(raf)
 
 
-const speedElements = document.querySelectorAll('[data-speed]');
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault()
+      const target = document.querySelector(this.getAttribute('href'))
+      if (target) {
+        lenis.scrollTo(target)
+      }
+    })
+  })
 
-lenis.on('scroll', ({ scroll }) => {
-  speedElements.forEach((element) => {
-    const speedMultiplier = parseFloat(element.dataset.speed) || 1;
-    const direction = element.dataset.direction || 'y';
-    const movement = (scroll * speedMultiplier) / 25;
-
-
-    if (direction.toLowerCase() === 'x') {
-      element.style.transform = `translateX(${movement})px`;
-    } else {
-      element.style.transform = `translateY(${movement})px`;
-    }
-  });
-});
 
 
 // Mouse Move Effect's-code
@@ -592,23 +584,6 @@ document.querySelectorAll('.mobile-menu a').forEach(link => {
     });
 });
 
-
-// Scroll To Top Button
-// document.addEventListener("DOMContentLoaded", () => {
-//   window.addEventListener('scroll', () => {
-//     if (window.scrollY > 10) {
-//       gsap.to('#scroll-btn', {
-//         opacity: 1,
-//         bottom: "5%"
-//       });
-//     } else {
-//       gsap.to('#scroll-btn', {
-//         opacity: 0,
-//         bottom: "3%"
-//       });
-//     }
-//   });
-// });
 
 window.addEventListener('scroll', () => {
   if (window.scrollY > 10) {

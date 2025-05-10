@@ -12,30 +12,30 @@
 <body>
 
     <nav class="w-[var(--full-width)] flex items-center justify-center fixed top-[30px] z-[9999]">
-        <header class="w-[85%] lg:w-[900px] rounded-[44px] py-[6px] pl-[20px] pr-[7px] bg-[#0d0d0d33] transition-all duration-300 ease-in-out overflow-hidden">
+        <header class="w-[85%] lg:w-[950px] rounded-[44px] py-[6px] pl-[20px] pr-[7px] bg-[#0d0d0d33] transition-all duration-300 ease-in-out overflow-hidden">
             <div class="header-top flex items-center justify-between">
                 <div class="logo">
-                    <img class="w-[152px]" src="./Assets/Media/Logo.svg" alt="">
+                    <img class="lg:w-[175px] w-[152px]" src="./Assets/Media/Logo.svg" alt="">
                 </div>
                 <div class="links flex items-center gap-[10px]">
                     <ul class="hidden lg:flex items-center nav-menu">
                         <li class="px-[16px] py-[14px] rounded-[50px]">
-                            <a class="syne flex text-[16px] font-semibold leading-[1em] text-[#ffffffcc]" href="#">Home</a>
+                            <a class="syne flex text-[16px] font-semibold leading-[1em] text-[#ffffffcc]" href="#top">Home</a>
                         </li>
                         <li class="px-[16px] py-[14px] rounded-[50px]">
-                            <a class="syne flex text-[16px] font-semibold leading-[1em] text-[#ffffffcc]" href="#">Projects</a>
+                            <a class="syne flex text-[16px] font-semibold leading-[1em] text-[#ffffffcc]" href="#projects">Projects</a>
                         </li>
                         <li class="px-[16px] py-[14px] rounded-[50px]">
-                            <a class="syne flex text-[16px] font-semibold leading-[1em] text-[#ffffffcc]" href="#">Albums</a>
+                            <a class="syne flex text-[16px] font-semibold leading-[1em] text-[#ffffffcc]" href="#albums">Albums</a>
                         </li>
                         <li class="px-[16px] py-[14px] rounded-[50px]">
-                            <a class="syne flex text-[16px] font-semibold leading-[1em] text-[#ffffffcc]" href="#">About</a>
+                            <a class="syne flex text-[16px] font-semibold leading-[1em] text-[#ffffffcc]" href="#about">About</a>
                         </li>
                         <li class="px-[16px] py-[14px] rounded-[50px]">
-                            <a class="syne flex text-[16px] font-semibold leading-[1em] text-[#ffffffcc]" href="#">Services</a>
+                            <a class="syne flex text-[16px] font-semibold leading-[1em] text-[#ffffffcc]" href="#faq">Faq</a>
                         </li>
                         <li class="px-[16px] py-[14px] rounded-[50px]">
-                            <a class="syne flex text-[16px] font-semibold leading-[1em] text-[#ffffffcc]" href="#">Blogs</a>
+                            <a class="syne flex text-[16px] font-semibold leading-[1em] text-[#ffffffcc]" href="#blogs">Blogs</a>
                         </li>
                     </ul>
                     <button class="syne text-[#0d0d0d] bg-white text-[16px] leading-[1em] font-bold px-[33px] py-[17px] items-center gap-[7px] rounded-[50px] cursor-pointer hidden lg:flex">
@@ -79,7 +79,7 @@
     </nav>
 
 
-        <div class="hero w-full h-screen flex flex-col items-center justify-center perspective-midrange">
+        <div id="top" class="hero w-full h-screen flex flex-col items-center justify-center perspective-midrange">
             <h1 class="syne text-[30px] lg:text-[70px] md:text-[50px] font-bold text-white leading-[1em] text-center w-[85%] lg:w-[80%]">Turning Video into Vibrant Conversations.</h1>
             <p class="inter text-[16px] md:text-[17px] leading-[1.5em] text-center text-white mt-[10px] mb-[25px] w-[75%] lg:w-[45%] md:w-[60%]">We're your friendly video wizards creating fantastic commercials, corporate videos, social ads and many more.</p>
             <button class="syne hover-btn text-[14px] md:text-[16px] font-bold leading-[1em] text-white rounded-[50px] py-[17px] px-[33px] cursor-pointer flex items-center gap-[8px] relative">
@@ -127,7 +127,7 @@
 
     </div>
 
-    <div class="portfolio-parent w-full lg:h-[350vh] relative">
+    <div id="projects" class="portfolio-parent w-full lg:h-[350vh] relative">
         <div class="portfolio w-full flex flex-col items-center gap-[40px] md:gap-[70px] sticky top-[30px] left-0 overflow-hidden">
 
             <div class="head w-[95%] lg:w-[1240px] flex flex-col md:flex-row items-center justify-between gap-[10px] lg:gap-0">
@@ -209,7 +209,7 @@
         </div>
     </div>
 
-    <div class="concept-parent w-full flex justify-center relative mt-[100px]">
+    <div id="albums" class="concept-parent w-full flex justify-center relative mt-[100px]">
         <img class="w-full h-full object-cover object-center absolute top-0 left-0" src="./Assets/Media/Concept-completion-bg-lines.svg" alt="">
 
         <div class="concept w-[var(--box-width)] flex flex-col lg:flex-row items-center lg:items-[unset] gap-[25px] md:gap-0 z-50 pb-[100px]">
@@ -388,7 +388,7 @@
 
     </div>
 
-    <div class="concept-parent w-full flex justify-center relative mt-[100px] mb-[75px] lg:pb-[100px]">
+    <div id="about" class="concept-parent w-full flex justify-center relative mt-[100px] mb-[75px] lg:pb-[100px]">
         <img class="w-full h-full object-cover object-center absolute top-0 left-0" src="./Assets/Media/Concept-completion-bg-lines.svg" alt="">
 
         <div class="concept w-[var(--box-width)] flex items-center lg:items-[unset] flex-col lg:flex-row z-50 gap-[25px] md:gap-0 lg:pb-[100px]">
@@ -497,7 +497,7 @@
 
     </div>
 
-    <div class="faq w-full pt-[100px] pb-[0] lg:py-[100px] px-[10px] md:px-0 flex flex-col items-center gap-[60px]">
+    <div id="faq" class="faq w-full pt-[100px] pb-[0] lg:py-[100px] px-[10px] md:px-0 flex flex-col items-center gap-[60px]">
         <h2 class="syne text-[25px] lg:text-[30px] font-semibold leading-[1em] text-white text-center">
             Curious? Check Out the Scoop! (FAQs)
         </h2>
@@ -611,7 +611,7 @@
         </div>
     </div>
 
-    <div class="blogs w-full py-[100px] flex flex-col items-center gap-[50px] lg:gap-[80px]">
+    <div id="blogs" class="blogs w-full py-[100px] flex flex-col items-center gap-[50px] lg:gap-[80px]">
         <div class="blogs-head flex flex-col items-center gap-[28px]">
             <h2 class="syne text-[25px] lg:text-[30px] font-semibold leading-[1em] text-white text-center">
                 Dive into our blogs
